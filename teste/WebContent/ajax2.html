@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<div id="demo">
+		<h1>The XMLHttpRequest Object</h1>
+		<button type="button" onclick="loadDoc()">Change Content</button>
+	</div>
+	<div id="demoa">
+
+	</div>
+
+	<script>
+		function loadDoc() {
+			var xhttp = new XMLHttpRequest();
+			console.log("b");
+			xhttp.onreadystatechange = function() {
+				console.log("a");
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("demoa").innerHTML = this.responseText;
+				}
+			};
+			xhttp.open("GET", "ajax_info.txt", true);
+			xhttp.send();
+		}
+	</script>
+
+</body>
+</html>
