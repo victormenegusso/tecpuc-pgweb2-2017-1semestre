@@ -1,3 +1,4 @@
+<%@page import="teste.Teste"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html>
@@ -20,6 +21,8 @@
 
 	out.print(a);
 	out.print(b);
+	
+	Teste t = new Teste();
 %>
 
 
