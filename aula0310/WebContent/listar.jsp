@@ -28,6 +28,8 @@
 		<th>nome</th>
 		<th>preco</th>
 		<th>detalhes</th>
+		<th>deletar</th>
+		<th>editar</th>
 	</tr>
 <%
 	// abrir uma conexao com BD
@@ -55,7 +57,22 @@
 			<td><%=tabela.getString("id") %></td>
 			<td><%=tabela.getString("nome") %></td>
 			<td><%=tabela.getDouble("preco") %></td>
-			<td><a href="detalhe_produto.jsp">detalhes</a></td>
+			<td>
+				<a 
+				href="detalhe_produto.jsp?id=<%=tabela.getString("id") %>">
+				detalhes</a></td>
+			
+			<td>
+				<a href="delete2.jsp?id=<%=tabela.getString("id") %>">
+					deletar
+				</a>
+			</td>
+			
+			<td>
+				<a href="editar_produto.jsp?id=<%=tabela.getString("id") %>">
+					editar
+				</a>
+			</td>
 		</tr>
 	<%
 	}

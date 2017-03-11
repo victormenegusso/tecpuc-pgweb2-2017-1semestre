@@ -10,24 +10,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<form me="post">
-	ID: <input name="id"/><br/>
-	Preco: <input name="preco"/><br/>
-	<input type="submit" name="btn" value="Editar"> 
-</form>
-
 <%
-	// verificando se o botão foi precionado
-	// para poder executar o comando de update
-	if( request.getParameter("btn") != null){
+
 		int id;
-		double preco;
 			
 		// pegando os inputs do formulario
 		// convertendo eles para o tipo certo
 		id = Integer.parseInt( request.getParameter("id") );
-		preco = Double.parseDouble( request.getParameter("preco") );
 		
 		// 1 - conectar no banco 
 		Connection con;
@@ -39,12 +28,11 @@
 		con = DriverManager.getConnection(url,user,password);
 		
 		// 2 - executar o comando 
-		String sql = "update produtos set preco = ? where id = ?";
+		String sql = "delete from produtos where id = ?";
 		PreparedStatement ps;
 		ps = con.prepareStatement(sql);
 		
-		ps.setDouble(1, preco);
-		ps.setInt(2, id);
+		ps.setInt(1, id);
 		
 		int numRegistros;
 		numRegistros = ps.executeUpdate();
@@ -53,7 +41,7 @@
 		
 		// 3 - fechar a conexao 
 		con.close();
-	}
+	
 %>
 
 
